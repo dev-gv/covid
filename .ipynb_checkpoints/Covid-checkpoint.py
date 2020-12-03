@@ -153,3 +153,24 @@ def death_recovery_rate():
     recovery_rate = co_main(8,"Recovery Rate")
     return pd.DataFrame({"Date":a , "Death_rate":b,"Recovey_rate":recovery_rate})
 
+def total_cases():
+    '''
+    This Method Returns the Day Wise Current Active Cases in World
+    
+    PS : Remember this is Total Day wise Cases
+    '''
+    a,b = main_function(9)
+    daily_cases = co_main(9,"Daily Cases")
+    return pd.DataFrame({"Date":a , "Active_cases":b,"Daily_cases":daily_cases})
+def total_deaths():
+    '''
+    This Method Returns the Day Wise Current Deaths and Daily Deaths in World
+    
+    return : DataFrame With date,Total Deaths,Daily Deaths
+    
+    '''
+    a,b = main_function(10)
+    c=[0]
+    for i in range(1,len(b)):
+        c.append(b[i]-b[i-1])
+    return pd.DataFrame({"Date":a,"Deaths":b,"Daily Deaths":c})
