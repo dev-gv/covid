@@ -54,3 +54,48 @@ def Track_str():
             data=data.append(temp,ignore_index=True)
     data.drop(["SKIP"],inplace=True,axis=1)
     return data
+#create a Data frame
+def Track():
+    '''
+    Print the current Covid19 cases in Integer Dtype 
+    '''
+    data = pd.DataFrame(columns=cols)
+    #Extracting Tags <td>
+    tags=soup('td')
+    Nr_tags = 19
+    i=0
+    j=1
+    k=0
+    save=True
+    while i<len(tags)-Nr_tags*10:
+        i+=1
+        if i == j:
+            j+=19
+            k=0
+            save =True
+        if save:
+            temp = dict(zip(cols,[0]*len(cols)))
+            while k<14:
+                if k==0:
+                    temp[cols[k]]=tags[k+i].get_text().replace('\n','')
+
+                else:
+                    if k==2 or k==4:
+                        temp[cols[k]]=tags[k+i].get_text()
+                        
+                    else:
+                        s=tags[k+i].get_text()
+                        if s=='' or s=='N/A':
+                            s=0
+                        else:
+                            s=s.replace(',','')
+                        try:
+                            temp[cols[k]]=int(float(s))
+                        except:
+                            temp[cols[k]] = 0
+
+                k+=1
+            save=False
+            data=data.append(temp,ignore_index=True)
+    data.drop(["SKIP"],inplace=True,axis=1)
+    return data
