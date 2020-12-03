@@ -54,6 +54,13 @@ def Track_str():
             data=data.append(temp,ignore_index=True)
     data.drop(["SKIP"],inplace=True,axis=1)
     return data
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+#create a Data frame
+>>>>>>> Text
+>>>>>>> main
 def Track():
     '''
     Print the current Covid19 cases in Integer Dtype 
@@ -98,6 +105,10 @@ def Track():
             data=data.append(temp,ignore_index=True)
     data.drop(["SKIP"],inplace=True,axis=1)
     return data
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 
 def main_function(x):
     '''
@@ -117,4 +128,10 @@ def main_function(x):
     final_active_world = Z[i+1:j-1]
     final_active_world = list(map(float,final_active_world.replace("\"","").split(',')))
     
+<<<<<<< HEAD
     return final_date,final_active_world
+=======
+    return final_date,final_active_world
+=======
+>>>>>>> Text
+>>>>>>> main
