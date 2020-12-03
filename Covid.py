@@ -20,3 +20,37 @@ try:
 except:
     print("Turn Your Internet Connection On")
 #create a Data frame
+
+def Track_str():
+    '''
+    Print the Covid data in Text format
+    '''
+    
+    data = pd.DataFrame(columns=cols)
+    #Extracting Tags <td>
+    tags=soup('td')
+    Nr_tags = 19
+    i=0
+    j=1
+    k=0
+    save=True
+    while i<len(tags)-Nr_tags*10:
+        i+=1
+        if i == j:
+            j+=19
+            k=0
+            save =True
+        if save:
+            temp = dict(zip(cols,[0]*len(cols)))
+            while k<14:
+                if k==0:
+                    temp[cols[k]]=tags[k+i].get_text().replace('\n','')
+
+                else:
+                    temp[cols[k]]=tags[k+i].get_text()
+
+                k+=1
+            save=False
+            data=data.append(temp,ignore_index=True)
+    data.drop(["SKIP"],inplace=True,axis=1)
+    return data
