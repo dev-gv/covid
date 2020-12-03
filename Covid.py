@@ -7,7 +7,7 @@ Created on Tue Sep 22 12:31:40 2020
 
 This Module Contains Covid Cases Data taken From https://www.worldometers.info/coronavirus/
 
-Functions and their breif Detail :
+Functions and their brief Detail :
 
 1- Track_str() : This Function returns Raw Data of All Countries in String Data Type
 
