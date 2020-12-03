@@ -124,4 +124,32 @@ def main_function(x):
 
     return final_date,final_active_world
 
+def co_main(x,lable=None):
+    t=soup.find_all(type="text/javascript")[x].string
+    i=re.search(lable,t).span()[1]
+    Z=t[i:]
+    (i,j)=re.search(r"\[(.*?)\]",Z).span()
+    final_date = Z[i+1:j-1]
+    final_date = final_date.replace("null","0")
+    final_active_world = list(map(float,final_date.replace("\"","").split(',')))
+
+    return final_active_world
+def active():
+    '''
+    This Method Returns the Day Wise Current Active Cases in World
+    
+    PS : Remember this is Total Day wise Cases
+    '''
+    a,b = main_function(7)
+    return pd.DataFrame({"Date":a , "Active_cases":b})
+
+def death_recovery_rate():
+    '''
+    This Method Returns the Day Wise Current Death Rate and Recovery Rate in World
+    
+    PS : Remember this is Total Death Rate
+    '''
+    a,b = main_function(8)
+    recovery_rate = co_main(8,"Recovery Rate")
+    return pd.DataFrame({"Date":a , "Death_rate":b,"Recovey_rate":recovery_rate})
 
