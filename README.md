@@ -26,3 +26,4 @@ Functions and their brief Detail :
 6- tatal_deaths() : this Function gives total death upto that day and Tatal Death on That day
 
 ------------------------------------------------------------------------------------------------->
+#Project Accomplished
